@@ -8,7 +8,6 @@ export default defineUserConfig({
   lang: 'zh-CN',
   title: "PJCP2's Personal Site",
   description: 'My first VuePress Site!',
-  base: '/docs/',
 
   theme: defaultTheme({
     logo: 'https://vuejs.press/images/hero.png',
