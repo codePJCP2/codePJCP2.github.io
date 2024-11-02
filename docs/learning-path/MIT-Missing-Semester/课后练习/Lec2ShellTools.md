@@ -186,4 +186,4 @@ find . -type f | xargs ls -ltch | head -1
 按照**最近的使用时间**列出文件则更简单了，去掉上述命令中的 `head` 命令即可。
 
 > 更新: 2024-09-15 15:57:31  
-> 原文: <https://www.yuque.com/yuqueyonghukaqxkk/self_learning_route/hnxrgvsdbtahfh91>
+> 原文: https://www.yuque.com/yuqueyonghukaqxkk/self_learning_route/hnxrgvsdbtahfh91

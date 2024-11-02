@@ -24,7 +24,7 @@ export default defineUserConfig({
   plugins: [
     shikiPlugin({
       // 语言配置项
-      langs: ['ts', 'json', 'vue', 'md', 'bash', 'diff', 'python', 'java', 'c', 'c#', 'c++', 'js'],
+      langs: ['ts', 'json', 'vue', 'md', 'bash', 'diff', 'python', 'java', 'c', 'c#', 'c++', 'js', 'cmake', 'makefile', 'html', 'go', 'shell', 'php'],
     }),
     markdownMathPlugin({
       // 选项
