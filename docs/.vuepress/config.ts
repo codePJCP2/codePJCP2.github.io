@@ -6,9 +6,9 @@ import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 
 export default defineUserConfig({
   lang: 'zh-CN',
-
   title: "PJCP2's Personal Site",
   description: 'My first VuePress Site!',
+  base: '/',
 
   theme: defaultTheme({
     logo: 'https://vuejs.press/images/hero.png',
