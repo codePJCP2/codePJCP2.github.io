@@ -10,21 +10,21 @@
 <font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">链接(Link)：链接</font>**<font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">函数和全局变量</font>**<font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">，会在所有的Object File中找寻函数的实现.</font><h1 id="makefile" tabindex="-1"><a class="header-anchor" href="#makefile"><span>Makefile</span></a></h1>
 <h2 id="font-style-color-rgb-64-64-64-background-color-rgb-252-252-252-makefile-font-的规则" tabindex="-1"><a class="header-anchor" href="#font-style-color-rgb-64-64-64-background-color-rgb-252-252-252-makefile-font-的规则"><span><code v-pre>&lt;font style=&quot;color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);&quot;&gt;Makefile&lt;/font&gt;</code> 的规则</span></a></h2>
 <p>Makefile 的一般规则如下：</p>
-<div class="language-makefile line-numbers-mode line-numbers-mode" data-highlighter="prismjs" data-ext="makefile" data-title="makefile"><pre v-pre  class="shiki nord vp-code" style="background-color:#2e3440ff;color:#d8dee9ff language-makefile"><code><span class="line"><span class="line"><span># 一般规则</span></span></span>
-<span class="line"><span class="line"><span>target ... : prerequisites ...</span></span></span>
-<span class="line"><span class="line"><span>    recipe</span></span></span>
-<span class="line"><span class="line"><span>    ...</span></span></span>
-<span class="line"><span class="line"><span>    ...</span></span></span>
-<span class="line"><span class="line"><span></span></span></span>
-<span class="line"><span class="line"><span># 示例 Makefile</span></span></span>
-<span class="line"><span class="line"><span>hello:hello.c</span></span></span>
-<span class="line"><span class="line"><span>    gcc hello.c -o hello    # 注意开头的tab, 而不是空格</span></span></span>
-<span class="line"><span class="line"><span></span></span></span>
-<span class="line"><span class="line"><span>.PHONY: clean # 表示clean是个伪目标</span></span></span>
-<span class="line"><span class="line"><span></span></span></span>
-<span class="line"><span class="line"><span># 特殊的 clean 规则</span></span></span>
-<span class="line"><span class="line"><span>clean:</span></span></span>
-<span class="line"><span class="line"><span>    rm hello    # 注意开头的tab, 而不是空格</span></span></span></code></pre>
+<div class="language-makefile line-numbers-mode line-numbers-mode" data-highlighter="prismjs" data-ext="makefile" data-title="makefile"><pre v-pre  class="shiki nord vp-code" style="background-color:#2e3440ff;color:#d8dee9ff language-makefile"><code><span class="line"><span class="line"><span style="color:#616E88"># 一般规则</span></span></span>
+<span class="line"><span class="line"><span style="color:#88C0D0">target</span><span style="color:#88C0D0"> ...</span><span style="color:#ECEFF4"> :</span><span style="color:#D8DEE9FF"> prerequisites ...</span></span></span>
+<span class="line"><span class="line"><span style="color:#D8DEE9FF">    recipe</span></span></span>
+<span class="line"><span class="line"><span style="color:#D8DEE9FF">    ...</span></span></span>
+<span class="line"><span class="line"><span style="color:#D8DEE9FF">    ...</span></span></span>
+<span class="line"><span class="line"></span></span>
+<span class="line"><span class="line"><span style="color:#616E88"># 示例 Makefile</span></span></span>
+<span class="line"><span class="line"><span style="color:#88C0D0">hello</span><span style="color:#ECEFF4">:</span><span style="color:#D8DEE9FF">hello.c</span></span></span>
+<span class="line"><span class="line"><span style="color:#D8DEE9FF">    gcc hello.c -o hello    </span><span style="color:#616E88"># 注意开头的tab, 而不是空格</span></span></span>
+<span class="line"><span class="line"></span></span>
+<span class="line"><span class="line"><span style="color:#88C0D0">.PHONY</span><span style="color:#ECEFF4">:</span><span style="color:#D8DEE9FF"> clean </span><span style="color:#616E88"># 表示clean是个伪目标</span></span></span>
+<span class="line"><span class="line"></span></span>
+<span class="line"><span class="line"><span style="color:#616E88"># 特殊的 clean 规则</span></span></span>
+<span class="line"><span class="line"><span style="color:#88C0D0">clean</span><span style="color:#ECEFF4">:</span></span></span>
+<span class="line"><span class="line"><span style="color:#D8DEE9FF">    rm hello    </span><span style="color:#616E88"># 注意开头的tab, 而不是空格</span></span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>分别讲解一下规则中的三个部分：</p>
 <ol>
 <li><code v-pre>target</code> ：一般情况下是目标文件名。这部分<font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">可以是一个object file（目标文件），也可以是一个可执行文件，还可以是一个标签（label）。</font></li>
@@ -42,13 +42,13 @@
 </ol>
 <font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">因此，</font>`<font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">Makefile</font>`<font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> 规则的执行规则大致可以描述如下：</font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">如果 prerequisites 文件列表中存在比 target 更新的文件的话，规则中的 recipe 部分的命令就会被执行，否则不执行。</font><h2 id="在-makefile-中使用变量" tabindex="-1"><a class="header-anchor" href="#在-makefile-中使用变量"><span><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">在 Makefile 中使用变量</font></span></a></h2>
 <p>跟常规编程意义上的变量类似，变量可以被类似如下方式定义：</p>
-<div class="language-makefile line-numbers-mode line-numbers-mode" data-highlighter="prismjs" data-ext="makefile" data-title="makefile"><pre v-pre  class="shiki nord vp-code" style="background-color:#2e3440ff;color:#d8dee9ff language-makefile"><code><span class="line"><span class="line"><span>objs = main.o list.o</span></span></span></code></pre>
+<div class="language-makefile line-numbers-mode line-numbers-mode" data-highlighter="prismjs" data-ext="makefile" data-title="makefile"><pre v-pre  class="shiki nord vp-code" style="background-color:#2e3440ff;color:#d8dee9ff language-makefile"><code><span class="line"><span class="line"><span style="color:#D8DEE9">objs</span><span style="color:#ECEFF4"> =</span><span style="color:#D8DEE9FF"> main.o list.o</span></span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>想要使用变量值，与 Shell 中访问变量值的方式有一点类似：</p>
-<div class="language-makefile line-numbers-mode line-numbers-mode" data-highlighter="prismjs" data-ext="makefile" data-title="makefile"><pre v-pre  class="shiki nord vp-code" style="background-color:#2e3440ff;color:#d8dee9ff language-makefile"><code><span class="line"><span class="line"><span># Makefile</span></span></span>
-<span class="line"><span class="line"><span>$(objs)</span></span></span>
-<span class="line"><span class="line"><span></span></span></span>
-<span class="line"><span class="line"><span># Shell</span></span></span>
-<span class="line"><span class="line"><span>$objs</span></span></span></code></pre>
+<div class="language-makefile line-numbers-mode line-numbers-mode" data-highlighter="prismjs" data-ext="makefile" data-title="makefile"><pre v-pre  class="shiki nord vp-code" style="background-color:#2e3440ff;color:#d8dee9ff language-makefile"><code><span class="line"><span class="line"><span style="color:#616E88"># Makefile</span></span></span>
+<span class="line"><span class="line"><span style="color:#81A1C1">$(</span><span style="color:#D8DEE9">objs</span><span style="color:#81A1C1">)</span></span></span>
+<span class="line"><span class="line"></span></span>
+<span class="line"><span class="line"><span style="color:#616E88"># Shell</span></span></span>
+<span class="line"><span class="line"><span style="color:#81A1C1">$o</span><span style="color:#D8DEE9FF">bjs</span></span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="让-make-进行自动推导" tabindex="-1"><a class="header-anchor" href="#让-make-进行自动推导"><span>让 Make 进行自动推导</span></a></h2>
 <p>GNU Make 的功能很强大，它可以在<strong>一定程度上</strong>自动推导文件依赖关系以及待执行的命令。</p>
 <p>只要make看到一个 <code v-pre>.o</code> 文件，它就会自动的把 <code v-pre>.c</code> 文件加在依赖关系中，并且相应的 <code v-pre>gcc -c xx.c</code> 命令也会被自动推导出来。</p>

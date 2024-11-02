@@ -13,7 +13,7 @@ export default defineUserConfig({
   theme: defaultTheme({
     logo: 'https://vuejs.press/images/hero.png',
 
-    navbar: ['/', '/guide/get-started', '/learning-path/index'],
+    navbar: ['/', '/guide/get-started'],
   }),
 
   // 排除 README.md
