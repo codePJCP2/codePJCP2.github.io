@@ -163,27 +163,6 @@ for file in "$@"; do
 done
 ```
 
-<details class="lake-collapse"><summary id="uc7ec0351"><span class="ne-text" style="font-size: 19px">代码分析(不要一上来就看啊 kuso!)</span></summary><pre data-language="bash" id="Rd4MF" class="ne-codeblock language-bash"><code>#!/bin/bash
-
-echo &quot;Starting program at $(date)&quot; # date会被替换成日期和时间
-
-echo &quot;Running program $0 with $# arguments with pid $$&quot;
-
-for file in &quot;$@&quot;; do
-    # 我们将标准输出流和标准错误流重定向到Null，因为我们并不关心这些信息
-    # 写入 /dev/null 中的内容会被删除
-    # 此处我们不关心文件内容，只关心查找结果(使用退出状态码来表征)
-    grep foobar &quot;$file&quot; &gt; /dev/null 2&gt; /dev/null
-    # 如果模式没有找到，则grep退出状态为 1
-    if [[ $? -ne 0 ]]; then
-        # 如果状态码不等于 0 则执行该分支操作
-        # -ne 是 test 中的比较操作符之一，详情可以查看 test 的手册
-        echo &quot;File $file does not have any foobar, adding one&quot;
-        echo &quot;# foobar&quot; &gt;&gt; &quot;$file&quot;
-    fi
-done</code></pre></details>
-可以，请看下面的内容：
-
 ### 常用通配符
 
 下表列出了常用的通配符：
