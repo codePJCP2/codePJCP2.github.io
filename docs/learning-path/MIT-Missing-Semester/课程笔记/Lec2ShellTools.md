@@ -1,7 +1,7 @@
 # Lec2 Shell Tools
 
-# Shell 脚本
-## `Bash` 中的变量
+## Shell 脚本
+### `Bash` 中的变量
 要定义一个变量非常简单，类似于 `python`中定义变量的方式：
 
 ```bash
@@ -26,7 +26,7 @@ foo = bar
 
 上面这段代码的实际操作是运行 `foo`程序，并将 `=`与 `bar`作为参数传递给 `foo`程序。
 
-## Bash 中的字符串
+### Bash 中的字符串
 类似于 `JavaScript`与 `Python`，Bash 中支持两种方式来定义字符串：单引号`'`与双引号 `"`，不过它们两个的含义并不相同：
 
 + 单引号`'`：由单引号定义的字符串会被解释为**纯文本内容**
@@ -42,7 +42,7 @@ echo "Value is $foo"
 # Value is bar
 ```
 
-## Bash 中的函数
+### Bash 中的函数
 如同大多数编程语言，`Bash`支持 `if-else``for``while``case`等流程控制语句。`Bash`还支持函数，函数可以接收参数并执行自定义操作，例如下面的例子：
 
 ```bash
@@ -59,26 +59,27 @@ mcd () {
 
 `Bash` 使用了很多特殊的变量来表示参数、错误代码和相关变量。下面列举了其中一些变量，更完整的列表可以参考[Special Characters](https://www.tldp.org/LDP/abs/html/special-chars.html)。
 
-+ `<font style="color:rgb(0, 0, 0);">$0</font>`<font style="color:rgb(0, 0, 0);"> - 脚本名</font>
-+ `<font style="color:rgb(0, 0, 0);">$1</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">到</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">$9</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">- 脚本的参数。</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">$1</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">是第一个参数，依此类推。</font>
++ `$0` - 脚本名
++ `$1` 到  `$9` - 脚本的参数。`$1`是第一个参数，依此类推。
 
 > 可以认为 `$<number>`占位符等同于 `argv[number]`
 >
 
-+ `<font style="color:rgb(0, 0, 0);">$@</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">- 所有参数</font>
-+ `<font style="color:rgb(0, 0, 0);">$#</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">- 参数个数</font>
-+ `<font style="color:rgb(0, 0, 0);">$?</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">- 前一个命令的返回值</font>
-+ `<font style="color:rgb(0, 0, 0);">$$</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">- 当前脚本的进程识别码</font>
-+ `<font style="color:rgb(0, 0, 0);">!!</font>`<font style="color:rgb(0, 0, 0);"> - 完整的上一条命令，包括参数。  
-</font><font style="color:rgb(0, 0, 0);">常见应用：当你因为权限不足执行命令失败时，可以使用 </font>`<font style="color:rgb(0, 0, 0);">sudo !!</font>`<font style="color:rgb(0, 0, 0);"> 再尝试一次。</font>
-+ `<font style="color:rgb(0, 0, 0);">$_</font>`<font style="color:rgb(0, 0, 0);"> - 上一条命令的最后一个参数。如果你正在使用的是交互式 Shell，你可以通过按下 </font>`<font style="color:rgb(0, 0, 0);">Esc</font>`<font style="color:rgb(0, 0, 0);"> 之后键入 . 来获取这个值。</font>
++ `$@` - 所有参数
++ `$#` - 参数个数
++ `$?` - 前一个命令的返回值
++ `$$` - 当前脚本的进程识别码
++ `!!` - 完整的上一条命令，包括参数。  
+    + 常见应用：当你因为权限不足执行命令失败时，可以使用 `sudo !!` 再尝试一次。
 
-## <font style="color:rgb(0, 0, 0);">Bash 中的返回值与逻辑运算符</font>
-命令执行完成或者执行出错时，都会向 `STDOUT`返回**输出值**，向 `STDERR`返回**错误码以及错误信息**，<font style="color:rgb(0, 0, 0);">便于脚本以更加友好的方式报告错误。</font>
++ `$_` - 上一条命令的最后一个参数。如果你正在使用的是交互式 Shell，你可以通过按下 `Esc` 之后键入 . 来获取这个值。
 
-<font style="color:rgb(0, 0, 0);">返回码或退出状态是脚本/命令之间交流执行状态的方式。类似于 C 语言中的 </font>`<font style="color:rgb(0, 0, 0);">return 0</font>`<font style="color:rgb(0, 0, 0);">，返回值 0 表示正常执行，其他所有非 0 的返回值都表示有错误发生。</font>
+### Bash 中的返回值与逻辑运算符
+命令执行完成或者执行出错时，都会向 `STDOUT`返回**输出值**，向 `STDERR`返回**错误码以及错误信息**，便于脚本以更加友好的方式报告错误。
 
-<font style="color:rgb(0, 0, 0);">这些 exitValue 可以被用于逻辑运算中。</font>`<font style="color:rgb(0, 0, 0);">Bash</font>`<font style="color:rgb(0, 0, 0);">中的逻辑运算符包含逻辑或运算符 </font>`<font style="color:rgb(0, 0, 0);">||</font>`<font style="color:rgb(0, 0, 0);">与逻辑与运算符 </font>`<font style="color:rgb(0, 0, 0);">&&</font>`<font style="color:rgb(0, 0, 0);">两种。退出码可以搭配上面提到的两个操作符使用，用来进行条件判断，决定是否执行其他程序：</font>
+返回码或退出状态是脚本/命令之间交流执行状态的方式。类似于 C 语言中的 `return 0`，返回值 0 表示正常执行，其他所有非 0 的返回值都表示有错误发生。
+
+这些 exitValue 可以被用于逻辑运算中。`Bash`中的逻辑运算符包含逻辑或运算符 `||`与逻辑与运算符 `&&` 两种。退出码可以搭配上面提到的两个操作符使用，用来进行条件判断，决定是否执行其他程序：
 
 ```bash
 # 逻辑运算符的短路效应
@@ -97,7 +98,7 @@ false ; echo "This will always run"
 # 输出 This will always run
 ```
 
-## 将命令的输出存储到变量中
+### 将命令的输出存储到变量中
 对于这个问题，也许你受到上一节内容的启发，会尝试着使用流重定向运算符 `>` 来命令的输出流进行重定向，通过这种方式将输出存储到变量中。
 
 ```bash
@@ -117,7 +118,7 @@ echo $foo
 
 如果你使用 `ls`命令，你可以很明显地发现当前目录下出现了一个 `foo` 文件。
 
-解决这种问题的方法是**使用命令替换(**_<font style="color:rgb(0, 0, 0);">command substitution)</font>_，它有两种写法：
+解决这种问题的方法是**使用命令替换(**_command substitution)_，它有两种写法：
 
 1. 采用反引号 ``...`` 
 2. (推荐) 使用 `$(...)` 语法
@@ -130,18 +131,18 @@ echo $foo
 
 当使用命令替换的方式来执行命令时，命令的输出结果会替换掉命令替换语法(即 `$(CMD)`)。
 
-比如说执行 `for file in $(ls)` 这条语句时，会先执行 `ls` 命令，然后将执行以后的结果替换掉 `$(ls)`，并<font style="color:rgb(0, 0, 0);">遍历得到的这些返回值。</font>
+比如说执行 `for file in $(ls)` 这条语句时，会先执行 `ls` 命令，然后将执行以后的结果替换掉 `$(ls)`，并遍历得到的这些返回值。
 
 > Extra：
 >
-> 还有一个与命令替换类似的冷门特性——进程替换(_<font style="color:rgb(0, 0, 0);">process substitution)。</font>_
+> 还有一个与命令替换类似的冷门特性——进程替换(_process substitution)。_
 >
-> `<font style="color:rgb(0, 0, 0);"><( CMD )</font>`<font style="color:rgb(0, 0, 0);"> 会执行 </font>`<font style="color:rgb(0, 0, 0);">CMD</font>`<font style="color:rgb(0, 0, 0);"> 并将结果输出到一个</font>**<font style="color:rgb(0, 0, 0);">临时文件</font>**<font style="color:rgb(0, 0, 0);">中，并将 </font>`<font style="color:rgb(0, 0, 0);"><( CMD )</font>`<font style="color:rgb(0, 0, 0);"> </font>**<font style="color:rgb(0, 0, 0);">替换成临时文件名</font>**<font style="color:rgb(0, 0, 0);">。</font>
+> `<( CMD )` 会执行 `CMD` 并将结果输出到一个**临时文件**中，并将 `<( CMD )`**替换成临时文件名**。
 >
-> <font style="color:rgb(0, 0, 0);">这在我们希望返回值通过文件而不是 </font>`<font style="color:rgb(0, 0, 0);">STDIN</font>`<font style="color:rgb(0, 0, 0);"> 传递时很有用。例如， </font>`<font style="color:rgb(0, 0, 0);">diff <(ls foo) <(ls bar)</font>`<font style="color:rgb(0, 0, 0);"> 会显示文件夹 </font>`<font style="color:rgb(0, 0, 0);">foo</font>`<font style="color:rgb(0, 0, 0);"> 和 </font>`<font style="color:rgb(0, 0, 0);">bar</font>`<font style="color:rgb(0, 0, 0);"> 中文件的区别。</font>
+> 这在我们希望返回值通过文件而不是 `STDIN`传递时很有用。例如， `diff <(ls foo) <(ls bar)` 会显示文件夹 `foo` 和 `bar` 中文件的区别。
 >
 
-## 例子-1
+### 例子-1
 上面说了这么多，看个例子吧：
 
 ```bash
@@ -181,7 +182,10 @@ for file in &quot;$@&quot;; do
         echo &quot;# foobar&quot; &gt;&gt; &quot;$file&quot;
     fi
 done</code></pre></details>
-## 常用通配符
+可以，请看下面的内容：
+
+### 常用通配符
+
 下表列出了常用的通配符：
 
 | 字符 | 含义 |
@@ -194,125 +198,83 @@ done</code></pre></details>
 | (str_1, str_2, ...) | 匹配元组内的任意一个字符串 |
 | {ch_1..ch_2} | 匹配ch_1到ch_2范围内的**全部**字符 |
 
-
 简单介绍一下部分符号的用法：
 
-+ <font style="color:rgb(0, 0, 0);">通配符 - 当你想要利用通配符进行匹配时，你可以分别使用 </font>`<font style="color:rgb(0, 0, 0);">?</font>`<font style="color:rgb(0, 0, 0);"> 和 </font>`<font style="color:rgb(0, 0, 0);">*</font>`<font style="color:rgb(0, 0, 0);"> 来匹配一个或任意个字符。  
-</font><font style="color:rgb(0, 0, 0);">例如，对于文件 </font>`<font style="color:rgb(0, 0, 0);">foo</font>`<font style="color:rgb(0, 0, 0);">, </font>`<font style="color:rgb(0, 0, 0);">foo1</font>`<font style="color:rgb(0, 0, 0);">, </font>`<font style="color:rgb(0, 0, 0);">foo2</font>`<font style="color:rgb(0, 0, 0);">, </font>`<font style="color:rgb(0, 0, 0);">foo10</font>`<font style="color:rgb(0, 0, 0);"> 和 </font>`<font style="color:rgb(0, 0, 0);">bar</font>`<font style="color:rgb(0, 0, 0);">, </font>`<font style="color:rgb(0, 0, 0);">rm foo?</font>`<font style="color:rgb(0, 0, 0);"> 这条命令会删除 </font>`<font style="color:rgb(0, 0, 0);">foo1</font>`<font style="color:rgb(0, 0, 0);"> 和 </font>`<font style="color:rgb(0, 0, 0);">foo2</font>`<font style="color:rgb(0, 0, 0);"> ，而 </font>`<font style="color:rgb(0, 0, 0);">rm foo*</font>`<font style="color:rgb(0, 0, 0);"> 则会删除除了 </font>`<font style="color:rgb(0, 0, 0);">bar</font>`<font style="color:rgb(0, 0, 0);"> 之外的所有文件。</font>
-+ <font style="color:rgb(0, 0, 0);">花括号 </font>`<font style="color:rgb(0, 0, 0);">{}</font>`<font style="color:rgb(0, 0, 0);"> - 当你有一系列的指令，其中包含一段公共子串时，可以用花括号来自动展开这些命令。这在</font>**<font style="color:rgb(0, 0, 0);">批量移动或转换文件</font>**<font style="color:rgb(0, 0, 0);">时非常方便。</font>
++ 通配符 - 使用 `?` 和 `*` 来匹配一个或多个字符。例如，`rm foo?` 删除 `foo1` 和 `foo2`，而 `rm foo*` 删除除了 `bar` 之外的所有文件。
++ 花括号 `{}` - 用于自动展开带有公共子串的命令，方便进行批量操作。
 
 ```bash
 mkdir project{1..9}
-# 会被展开为
+# 被展开为
 mkdir project1 project2 project3 project4 project5 project6 project7 project8 project9
 
 mv *{.py,.sh} folder
-# 这会移动所有 *.py 和 *.sh 文件至 folder 文件夹
+# 移动所有 *.py 和 *.sh 文件至 folder 文件夹
 
-# 下面命令会创建 foo/a, foo/b, ... foo/h, bar/a, bar/b, ... bar/h 这些文件
-# 实际上是做了一次笛卡尔积之后的结果
 touch {foo,bar}/{a..h}
+# 创建 foo/a, foo/b, ... foo/h, bar/a, bar/b, ... bar/h
 ```
 
-# Shell 工具
-## tldr - <font style="color:rgb(0, 0, 0);">查看命令如何使用</font>
+## Shell 工具
+
+### tldr - 查看命令如何使用
+
 > 部分术语说明
 >
-> + 标记 (flag)：一般形式为 `-$lowerCaseLetter`(此处`$lowerCaseLetter`为占位符)。例如 `mkdir -p`
+> + 标记 (flag)：一般形式为 `-$lowerCaseLetter`。例如 `mkdir -p`
 > + 选项(option)：与标记形式类似，不过后面一般会跟上参数。例如 `openapi -client axios`
->
 
-可能你看到这里会有点疑惑：通过 `man`命令或者 `-h,-help`标记已经可以查看命令的详细文档了，为什么还要引入 `tldr` ?
-
-<font style="color:rgb(0, 0, 0);">有时候手册内容太过详实，让我们难以在其中查找哪些最常用的标记和语法。 </font>[TLDR pages](https://tldr.sh/)<font style="color:rgb(0, 0, 0);"> 是一个很不错的替代品，它提供了一些案例，可以帮助您快速找到正确的选项。下面是一些例子：</font>
+有时手册内容过于详实，不易查找常用标记和语法。 [TLDR pages](https://tldr.sh/) 提供简洁案例，帮助快速找到正确选项。
 
 ![使用 tldr 获取 ls 的常见使用案例](./img/L3SAN1XY1dzJLrzf/1726222627916-8d00521a-4651-4e86-a639-38deeb1e80ee-464827.png)
 
-相比之下，`man`命令或者 `-h,-help`标记**(对于仅需要寻找用法的情况来说)**就显得有些丰富了：
+相比之下，`man`命令或 `-h,-help` 标记则显得内容丰富。
 
 ![使用 --help 标记获取 ls 的详细帮助文档](./img/L3SAN1XY1dzJLrzf/1726222791719-cd94a242-6fa3-49c7-90f8-9a6b411f11ac-333433.png)
 
-## 查找文件
-脱离了 GUI 界面，在命令行交互的系统中，寻找文件这一最常见的任务有些时候真不是那么简单。
+### 查找文件
 
-不过没关系，`find`命令来救你了！
-
-<font style="color:rgb(0, 0, 0);">所有的类 UNIX 系统都包含一个名为 </font>[find](https://man7.org/linux/man-pages/man1/find.1.html)<font style="color:rgb(0, 0, 0);"> 的工具，它是 shell 上用于查找文件的绝佳工具。</font>
-
-`<font style="color:rgb(0, 0, 0);">find</font>`<font style="color:rgb(0, 0, 0);">命令能够</font>**<font style="color:rgb(0, 0, 0);">递归地</font>**<font style="color:rgb(0, 0, 0);">搜索符合条件的文件，例如：</font>
+在命令行中，寻找文件是一项常见但并不简单的任务。`find`命令能够递归地搜索符合条件的文件，例如：
 
 ```bash
-# 查找(当前目录中，下同)所有名称为src的文件夹
 find . -name src -type d
-# 查找所有文件夹路径中包含test的python文件
 find . -path '*/test/*.py' -type f
-# 查找前一天修改的所有文件
 find . -mtime -1
-# 查找所有大小在500k至10M的tar.gz文件
 find . -size +500k -size -10M -name '*.tar.gz'
 ```
 
-`find` 的作用远不止于此，除了寻找文件，它还能对找到的文件执行操作(`-exec`选项之后的命令)：
+`find` 还能对找到的文件执行操作：
 
 ```bash
-# 删除全部扩展名为.tmp 的文件
 find . -name '*.tmp' -exec rm {} \;
-# 查找全部的 PNG 文件并将其转换为 JPG
 find . -name '*.png' -exec convert {} {}.jpg \;
 ```
 
-如果只想做一些简单的操作的话，可以使用 `fd` 指令。例如想要找后缀名为 `.py` 的文件：
+使用 `fd` 指令可以更简化查找，例如找 `.py` 文件：
 
 + `find`： `find -name '*.py'`
 + `fd` ： `fd '*.py'`
 
-前面两种命令均是直接搜索文件，如果需要**更高效**，联想到数据库中**插入索引**能让查询速度变快的事实，或许我们需要编制索引或者创建相关的数据库这些手段来解决问题。
+对于更高效的查找，可以使用 `locate`，它使用由 `updatedb` 更新的数据库，虽然速度快，但只能通过文件名查找。
 
-<font style="color:rgb(0, 0, 0);">这就要靠 </font>[locate](https://man7.org/linux/man-pages/man1/locate.1.html)<font style="color:rgb(0, 0, 0);"> 了。 </font>`<font style="color:rgb(0, 0, 0);">locate</font>`<font style="color:rgb(0, 0, 0);"> 使用一个由 </font>[updatedb](https://man7.org/linux/man-pages/man1/updatedb.1.html)<font style="color:rgb(0, 0, 0);"> 负责更新的数据库，在大多数系统中 </font>`<font style="color:rgb(0, 0, 0);">updatedb</font>`<font style="color:rgb(0, 0, 0);"> 都会通过 </font>[cron](https://man7.org/linux/man-pages/man8/cron.8.html)<font style="color:rgb(0, 0, 0);"> 每日更新。这便需要我们在速度和时效性之间作出权衡。而且，</font>`<font style="color:rgb(0, 0, 0);">find</font>`<font style="color:rgb(0, 0, 0);"> 和类似的工具可以通过别的属性比如文件大小、修改时间或是权限来查找文件，</font>`<font style="color:rgb(0, 0, 0);">locate</font>`<font style="color:rgb(0, 0, 0);"> 则只能通过文件名。 </font>[这里](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other)<font style="color:rgb(0, 0, 0);"> 有一个更详细的对比。</font>
+### 查找代码/查找文件内容
 
-## <font style="color:rgb(0, 0, 0);">查找代码/查找文件内容</font>
-查找文件基本上是最频繁的重复劳动，不过更多时候查找文件是为了获取文件里面的信息。
+如果需要获取文件中的信息，使用 `grep` 是个好选择。`grep` 支持多种选项：
 
-如果想要解决上面所说的问题，使用 `find ... -exec (command)`也许也能满足要求，然而<font style="color:rgb(0, 0, 0);">很多类 UNIX 的系统都提供了</font>`grep`命令以解决该问题。`grep`<font style="color:rgb(0, 0, 0);">是用于对输入文本进行匹配的通用工具，是一个非常重要的 Shell 工具。</font>
++ `-C`：获取上下文（Context）
++ `-v`：反选，输出不匹配的结果
 
-`<font style="color:rgb(0, 0, 0);">grep</font>`<font style="color:rgb(0, 0, 0);"> 有很多选项，这也使它成为一个非常全能的工具。其中授课者经常使用的有 ：</font>
+例如，`grep -C 5` 输出匹配结果前后五行，而 `-R` 选项可以递归进入子目录。
 
-+ `<font style="color:rgb(0, 0, 0);">-C</font>`<font style="color:rgb(0, 0, 0);"> ：获取查找结果的上下文（Context）</font>
-+ `<font style="color:rgb(0, 0, 0);">-v</font>`<font style="color:rgb(0, 0, 0);"> 将对结果进行反选（Invert），也就是输出不匹配的结果。</font>
+### 查找 Shell 命令历史记录
 
-<font style="color:rgb(0, 0, 0);">举例来说， </font>`<font style="color:rgb(0, 0, 0);">grep -C 5</font>`<font style="color:rgb(0, 0, 0);"> 会输出匹配结果</font>**<font style="color:rgb(0, 0, 0);">前后五行</font>**<font style="color:rgb(0, 0, 0);">。当需要搜索大量文件的时候，使用 </font>`<font style="color:rgb(0, 0, 0);">-R</font>`<font style="color:rgb(0, 0, 0);"> 会</font>**<font style="color:rgb(0, 0, 0);">递归地</font>**<font style="color:rgb(0, 0, 0);">进入子目录并搜索所有的文本文件。</font>
+使用 `history` 命令可以访问 shell 中的历史命令。也可以用 `Ctrl+R` 进行命令历史的回溯搜索。
 
-<font style="color:rgb(0, 0, 0);">不幸的是，因为 </font>`<font style="color:rgb(0, 0, 0);">grep</font>`<font style="color:rgb(0, 0, 0);"> 功能比较全面，牺牲了一些快捷性，所以跟 </font>`<font style="color:rgb(0, 0, 0);">find</font>`<font style="color:rgb(0, 0, 0);"> 类似，它的替代品也开始出现。例如 </font>`<font style="color:rgb(0, 0, 0);">ripgrep(rg)</font>`<font style="color:rgb(0, 0, 0);">，它速度快，而且用法非常符合直觉：</font>
+一些插件如 [fzf](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#ctrl-r) 和 [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) 能提升搜索体验。
 
-```bash
-# 查找所有使用了 requests 库的文件
-rg -t py 'import requests'
-# 查找所有没有写 shebang 的文件（包含隐藏文件）
-rg -u --files-without-match "^#!"
-# 查找所有的foo字符串，并打印其之后的5行
-rg foo -A 5
-# 打印匹配的统计信息（匹配的行和文件的数量）
-rg --stats PATTERN
-```
+### 文件夹导航
 
-## 查找 Shell 命令历史记录
-`<font style="color:rgb(0, 0, 0);">history</font>`<font style="color:rgb(0, 0, 0);"> 命令允许您以程序员的方式来访问 shell 中输入的历史命令。这个命令会在标准输出中打印 shell 中的历史命令。</font>
-
-<font style="color:rgb(0, 0, 0);">对于大多数的 shell 来说，也可以使用 </font>`<font style="color:rgb(0, 0, 0);">Ctrl+R</font>`<font style="color:rgb(0, 0, 0);"> 对命令历史记录进行回溯搜索。敲 </font>`<font style="color:rgb(0, 0, 0);">Ctrl+R</font>`<font style="color:rgb(0, 0, 0);"> 后您可以输入子串来进行匹配，查找历史命令行。</font>
-
-<font style="color:rgb(0, 0, 0);">有些插件也能够极大改善命令历史记录搜索体验，例如 </font>[fzf](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#ctrl-r)、[zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)等。
-
-## 文件夹导航
-> 笔记整理到这里暂时不想写了，先复制吧(倒)
->
-
-<font style="color:rgb(0, 0, 0);">之前对所有操作我们都默认一个前提，即您已经位于想要执行命令的目录下，但是如何才能高效地在目录间随意切换呢？有很多简便的方法可以做到，比如设置 alias，使用 </font>[<font style="color:rgb(0, 0, 0);">ln -s</font>](https://man7.org/linux/man-pages/man1/ln.1.html)<font style="color:rgb(0, 0, 0);"> 创建符号连接等。而开发者们已经想到了很多更为精妙的解决方案。</font>
-
-<font style="color:rgb(0, 0, 0);">由于本课程的目的是尽可能对你的日常习惯进行优化。因此，我们可以使用</font><font style="color:rgb(0, 0, 0);"> </font>[<font style="color:rgb(0, 0, 0);">fasd</font>](https://github.com/clvv/fasd)<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">和</font><font style="color:rgb(0, 0, 0);"> </font>[<font style="color:rgb(0, 0, 0);">autojump</font>](https://github.com/wting/autojump)<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">这两个工具来查找最常用或最近使用的文件和目录。</font>
-
-<font style="color:rgb(0, 0, 0);">Fasd 基于</font><font style="color:rgb(0, 0, 0);"> </font>[<font style="color:rgb(0, 0, 0);">frecency</font>](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Places/Frecency_algorithm)<font style="color:rgb(0, 0, 0);">对文件和文件排序，也就是说它会同时针对频率（</font>_<font style="color:rgb(0, 0, 0);">frequency</font>_<font style="color:rgb(0, 0, 0);">）和时效（</font>_<font style="color:rgb(0, 0, 0);">recency</font>_<font style="color:rgb(0, 0, 0);">）进行排序。默认情况下，</font>`<font style="color:rgb(0, 0, 0);">fasd</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">使用命令</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">z</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">帮助我们快速切换到最常访问的目录。例如， 如果您经常访问</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">/home/user/files/cool_project</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">目录，那么可以直接使用</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">z cool</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">跳转到该目录。对于 autojump，则使用</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">j cool</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">代替即可。</font>
-
-<font style="color:rgb(0, 0, 0);">还有一些更复杂的工具可以用来概览目录结构，例如 </font>[<font style="color:rgb(0, 0, 0);">tree</font>](https://linux.die.net/man/1/tree)<font style="color:rgb(0, 0, 0);">, </font>[<font style="color:rgb(0, 0, 0);">broot</font>](https://github.com/Canop/broot)<font style="color:rgb(0, 0, 0);"> 或更加完整的文件管理器，例如 </font>[<font style="color:rgb(0, 0, 0);">nnn</font>](https://github.com/jarun/nnn)<font style="color:rgb(0, 0, 0);"> 或 </font>[<font style="color:rgb(0, 0, 0);">ranger</font>](https://github.com/ranger/ranger)<font style="color:rgb(0, 0, 0);">。</font>
+为了在目录间高效切换，可以设置 alias 或使用 [ln -s](https://man7.org/linux/man-pages/man1/ln.1.html) 创建符号连接等工具，如 [fasd](https://github.com/clvv/fasd) 和 [autojump](https://github.com/wting/autojump)。
 
 
 
